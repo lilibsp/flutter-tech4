@@ -1,6 +1,8 @@
 # flutter-tech4
 Tech Challenge 4 Low Code com o uso do Flutteflow
 
+O projeto pode ser testado em https://app.flutterflow.io/project/criacao-eventos-wip3ki
+
 Funcionalidades
 
 Criação de Eventos: Permite aos usuários cadastrar novos eventos.
@@ -19,45 +21,38 @@ Estrutura do Projeto
 Inicialização do Firebase
 No arquivo firebase_config.dart, é realizada a configuração do Firebase para o aplicativo.
 
-Future initFirebase() async {
-  if (kIsWeb) {
-    await Firebase.initializeApp(
-        options: const FirebaseOptions(
-            apiKey: "API_KEY",
-            authDomain: "criacao-eventos.firebaseapp.com",
-            projectId: "criacao-eventos",
-            storageBucket: "criacao-eventos.firebasestorage.app",
-            messagingSenderId: "ID",
-            appId: "APP_ID"));
-  } else {
-    await Firebase.initializeApp();
-  }
-}
-
 Funcionalidades do Firestore
 
 O projeto permite consultar os eventos armazenados no Firestore com funções como queryCriacaoEventosRecord, queryCriacaoEventosRecordOnce e queryCriacaoEventosRecordCount.
 
-Stream<List<CriacaoEventosRecord>> queryCriacaoEventosRecord({
-  Query Function(Query)? queryBuilder,
-  int limit = -1,
-  bool singleRecord = false,
-}) =>
-    queryCollection(
-      CriacaoEventosRecord.collection,
-      CriacaoEventosRecord.fromSnapshot,
-      queryBuilder: queryBuilder,
-      limit: limit,
-      singleRecord: singleRecord,
-    );
+Navegação e UI
 
+A navegação é gerenciada com a biblioteca GoRouter, e a aparência do aplicativo é ajustada utilizando o FlutterFlowTheme.
 
 Páginas
 
 O aplicativo inclui várias páginas, como a página inicial (PaginainicialWidget), cadastro de eventos (CadastrareventoWidget), e listagem de eventos (ListareventosWidget).
 
-export '/pages/paginainicial/paginainicial_widget.dart' show PaginainicialWidget;
-export '/pages/cadastrarevento/cadastrarevento_widget.dart' show CadastrareventoWidget;
-export '/pages/listareventos/listareventos_widget.dart' show ListareventosWidget;
+Como Executar o Projeto
 
-O projeto pode ser visualizado e testado em https://app.flutterflow.io/project/criacao-eventos-wip3ki
+Pré-requisitos
+
+Flutter: Certifique-se de que o Flutter esteja instalado corretamente em seu ambiente de desenvolvimento.
+Firebase: Um projeto Firebase configurado e vinculado ao seu aplicativo.
+
+Passos
+
+Clonar o repositório:
+git clone https://github.com/usuario/criacao-eventos.git
+cd criacao-eventos
+
+Instalar dependências:
+flutter pub get
+
+Configurar Firebase:
+Adicione suas credenciais do Firebase no arquivo de configuração firebase_options.dart com as informações específicas do seu projeto Firebase.
+
+Executar o aplicativo:
+flutter run
+
+
